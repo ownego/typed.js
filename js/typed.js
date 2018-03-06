@@ -246,7 +246,12 @@
                 self.el.value = nextString;
               } else if (self.contentType === 'html') {
                 var curEl = document.createElement('span');
-                curEl.innerHTML = nextString;
+                if (nextString === ' ') {
+                  curEl.innerHTML = '&nbsp;';
+                } else {
+                  curEl.innerHTML = nextString;
+                }
+
                 self.el.appendChild(curEl);
                 setTimeout(function() {
                   curEl.className = 'typed-text';
